@@ -343,11 +343,11 @@ open('港澳.txt','wb').write(r.content)         #打开源文件并临时写入
 
 #从文本中截取省市段生成两个新文件#
 #  获取远程直播源文件，打开文件并输出临时文件并替换关键词
-url = "https://raw.githubusercontent.com/frxz751113/AAAAA/main/IPTV/汇总.txt"          #源采集地址
+url = "https://raw.githubusercontent.com/mengxianshengaaa/live/main/tv/zhibo.txt"          #源采集地址
 r = requests.get(url)
 open('TW.txt','wb').write(r.content)         #打开源文件并临时写入
 # 定义关键词
-start_keyword = '省市频道,#genre#'
+start_keyword = '央视频道,#genre#'
 end_keyword = '港澳频道,#genre#'
 # 输入输出文件路径
 input_file_path = 'TW.txt'  # 替换为你的输入文件路径
