@@ -299,7 +299,7 @@ for ip_key, result in detected_ips.items():
 #  获取远程直播源文件,打开文件并输出临时文件
 url = "https://raw.bgithub.xyz/frxz751113/AAAAA/main/IPTV/汇汇.txt"          #源采集地址
 r = requests.get(url)
-open('综合源.txt','wb').write(r.content)         #打开源文件并临时写入
+open('iptv_list.txt','wb').write(r.content)         #打开源文件并临时写入
 
 
 #简体转繁体#
@@ -308,12 +308,12 @@ open('综合源.txt','wb').write(r.content)         #打开源文件并临时写
 converter = OpenCC('t2s.json')#繁转简
 #converter = OpenCC('s2t.json')#简转繁
 # 打开txt文件
-with open('综合源.txt', 'r', encoding='utf-8') as file:
+with open('iptv_list.txt', 'r', encoding='utf-8') as file:
     traditional_text = file.read()
 # 进行繁体字转简体字的转换
 simplified_text = converter.convert(traditional_text)
 # 将转换后的简体字写入txt文件
-with open('综合源.txt', 'w', encoding='utf-8') as file:
+with open('iptv_list.txt', 'w', encoding='utf-8') as file:
     file.write(simplified_text)
 
 
@@ -560,7 +560,7 @@ with open('组播优选.txt', 'w', encoding="utf-8") as file:
     for line in unique_lines:
         file.write(line)  # 确保每行后面有换行符 + '\n'
 # 将唯一的行追加到第二个文件
-#with open('综合源.txt', 'a', encoding="utf-8") as file:
+#with open('iptv_list.txt', 'a', encoding="utf-8") as file:
     #for line in unique_lines:
         #file.write(line)  # 确保每行后面有换行符 + '\n'
 
@@ -585,11 +585,11 @@ for line in lines:
         # 如果行不包含排除关键词，或者同时包含排除关键词和例外关键词，则保留该行
         filtered_lines.append(line)
 # 将过滤后的内容追加写入新的文本文件
-with open('综合源.txt', 'a', encoding='utf-8') as file:
+with open('iptv_list.txt', 'a', encoding='utf-8') as file:
     file.writelines(filtered_lines)
 
 #从整理好的文本中进行特定关键词替换以规范频道名#
-for line in fileinput.input("综合源.txt", inplace=True):   #打开临时文件原地替换关键字
+for line in fileinput.input("iptv_list.txt", inplace=True):   #打开临时文件原地替换关键字
     line = line.replace("CCTV164K", "CCTV16-4K")  
     line = line.replace("CCTV4K", "CCTV-4K")  
     print(line, end="")   
@@ -603,7 +603,7 @@ for file in files_to_remove:
         os.remove(file)
     else:              # 如果文件不存在,则提示异常并打印提示信息
         print(f"文件 {file} 不存在,跳过删除。")
-print("任务运行完毕,分类频道列表可查看文件夹内综合源.txt文件！")
+print("任务运行完毕,分类频道列表可查看文件夹内iptv_list.txt文件！")
 # 打印酒店源
 for ip_key, result in detected_ips.items():
     print(f"IP Key: {ip_key}, Status: {result['status']}")
