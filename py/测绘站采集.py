@@ -326,7 +326,7 @@ for file in files_to_remove:
         os.remove(file)
     else:              # 如果文件不存在,则提示异常并打印提示信息
         print(f"文件 {file} 不存在,跳过删除。")
-print("任务运行完毕,分类频道列表可查看文件夹内综合源.txt文件！")
+print("任务运行完毕,分类频道列表可查看文件夹内iptv_list.txt文件！")
 
 
 
