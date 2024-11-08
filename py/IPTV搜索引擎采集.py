@@ -417,11 +417,11 @@ def check_and_write_file(input_file, output_file, keywords):
         print(f"未提取到关键词,不创建输出文件 {output_file}。")
 
 # 按类别提取关键词并写入文件
-check_and_write_file('2.txt',  'a.txt',  keywords="央视频道, CCTV, CHC, 全球大片, 星光院线, 8K, 4K, 4k")
-check_and_write_file('2.txt',  'b.txt',  keywords="卫视频道, 卫视, 凤凰, 星空")
-check_and_write_file('2.txt',  'c0.txt',  keywords="组播剧场, 第一剧场, 怀旧剧场, 风云音乐, 风云剧场, 欢笑剧场, 都市剧场, 高清电影, 家庭影院, 动作电影, 影迷, 峨眉, 重温, 女性, 地理")
-check_and_write_file('2.txt',  'c.txt',  keywords="组播剧场, 爱动漫, SiTV, 爱怀旧, 爱经典, 爱科幻, 爱青春, 爱悬疑, 爱幼教, 爱院线")
-check_and_write_file('2.txt',  'd.txt',  keywords="北京频道, 北京")
+check_and_write_file('2.txt',  'a.txt',  keywords="央视频道&爬虫, CCTV, CHC, 8K, 4K")
+check_and_write_file('2.txt',  'b.txt',  keywords="卫视频道&爬虫, 卫视, 凤凰, 星空")
+check_and_write_file('2.txt',  'c0.txt',  keywords="数字频道&爬虫, 第一剧场, 怀旧剧场, 风云音乐, 风云剧场, 央视文化, 都市剧场, 高清电影, 家庭影院, 动作电影, 影迷, 峨眉, 重温, 女性, 地理")
+check_and_write_file('2.txt',  'c.txt',  keywords="ihot系列&爬虫, 爱动漫, SiTV, 爱怀旧, 爱经典, 爱科幻, 爱青春, 爱悬疑, 爱幼教, 爱院线")
+check_and_write_file('2.txt',  'd.txt',  keywords="省份频道&爬虫, 江苏, 北京")
 ###############################################################################################################################################################################################################################
 ##############################################################对生成的文件进行合并
 file_contents = []
@@ -469,26 +469,8 @@ remove_duplicates('去重.txt', '分类.txt')
 
 #从整理好的文本中进行特定关键词替换以规范频道名#
 for line in fileinput.input("分类.txt", inplace=True):   #打开临时文件原地替换关键字
-    line = line.replace("CCTV1,", "CCTV1-综合,")  
-    line = line.replace("CCTV2,", "CCTV2-财经,")  
-    line = line.replace("CCTV3,", "CCTV3-综艺,")  
-    line = line.replace("CCTV4,", "CCTV4-国际,")  
-    line = line.replace("CCTV5,", "CCTV5-体育,")  
-    line = line.replace("CCTV5+,", "CCTV5-体育plus,")  
-    line = line.replace("CCTV6,", "CCTV6-电影,")  
-    line = line.replace("CCTV7,", "CCTV7-军事,")  
-    line = line.replace("CCTV8,", "CCTV8-电视剧,")  
-    line = line.replace("CCTV9,", "CCTV9-纪录,")  
-    line = line.replace("CCTV10,", "CCTV10-科教,")  
-    line = line.replace("CCTV11,", "CCTV11-戏曲,")  
-    line = line.replace("CCTV11+,", "CCTV11-戏曲,")  
-    line = line.replace("CCTV12,", "CCTV12-社会与法,")  
-    line = line.replace("CCTV13,", "CCTV13-新闻,")  
-    line = line.replace("CCTV14,", "CCTV14-少儿,")  
-    line = line.replace("CCTV15,", "CCTV15-音乐,")  
-    line = line.replace("CCTV16,", "CCTV16-奥林匹克,")  
-    line = line.replace("CCTV17,", "CCTV17-农业农村,") 
-    line = line.replace("CHC", "") 
+    line = line.replace("CCTV1,", "CCTV1,")  
+
     print(line, end="")   
 
 
@@ -514,7 +496,7 @@ with open('组播优选.txt', 'w', encoding="utf-8") as file:
         #file.write(line)  # 确保每行后面有换行符 + '\n'
 
 # 定义要排除的关键词列表
-excluded_keywords = ['CCTV', '卫视', '关键词3']
+excluded_keywords = ['关键词3']
 # 定义例外关键词列表，即使它们在排除列表中，也应该被保留
 exception_keywords = ['4K', '8K', '例外关键词']
 # 打开原始文本文件并读取内容
